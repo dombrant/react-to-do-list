@@ -1,7 +1,7 @@
 {
   "name": "react-to-do-list",
   "version": "1.0.0",
-  "description": "Yes, another to do list to test out a framework",
+  "description": "Yes, another to-do list to test out a framework",
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
