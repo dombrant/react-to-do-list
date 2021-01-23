@@ -29784,15 +29784,63 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Header = function Header() {
+var Header = function Header(_ref) {
+  var listLength = _ref.listLength;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "header-container"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, " To-Do List "), /*#__PURE__*/_react.default.createElement("p", null, " Hello, you have items due "));
+  }, /*#__PURE__*/_react.default.createElement("h1", null, " To-Do List "), /*#__PURE__*/_react.default.createElement("p", null, " Hello, you have items ", listLength, " due "));
 };
 
 var _default = Header;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"components/App.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"components/ToDoItem.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ToDoItem = function ToDoItem(_ref) {
+  var text = _ref.text;
+  return /*#__PURE__*/_react.default.createElement("li", {
+    className: "to-do-item"
+  }, /*#__PURE__*/_react.default.createElement("p", null, " ", text, " "), /*#__PURE__*/_react.default.createElement("button", null, " X "));
+};
+
+var _default = ToDoItem;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/ToDoList.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _ToDoItem = _interopRequireDefault(require("./ToDoItem"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ToDoList = function ToDoList(_ref) {
+  var toDoItems = _ref.toDoItems;
+  return /*#__PURE__*/_react.default.createElement("ul", null, toDoItems.map(function (item, index) {
+    return /*#__PURE__*/_react.default.createElement(_ToDoItem.default, {
+      key: index,
+      text: item.text
+    });
+  }));
+};
+
+var _default = ToDoList;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./ToDoItem":"components/ToDoItem.js"}],"components/App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29804,15 +29852,45 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Header = _interopRequireDefault(require("./Header"));
 
+var _ToDoList = _interopRequireDefault(require("./ToDoList"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var App = function App() {
-  return /*#__PURE__*/_react.default.createElement(_Header.default, null);
+  var _React$useState = _react.default.useState([{
+    text: "Go to the store"
+  }, {
+    text: "Workout"
+  }, {
+    text: "Call Jenny"
+  }]),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      toDoItems = _React$useState2[0],
+      setToDoItems = _React$useState2[1];
+
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, {
+    listLength: toDoItems.length
+  }), /*#__PURE__*/_react.default.createElement(_ToDoList.default, {
+    toDoItems: toDoItems,
+    setToDoItems: setToDoItems
+  }));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Header":"components/Header.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Header":"components/Header.js","./ToDoList":"components/ToDoList.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29824,7 +29902,7 @@ var _App = _interopRequireDefault(require("./components/App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_App.default, null), document.querySelector("#main"));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/App":"components/App.jsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/App":"components/App.jsx"}],"../node_modules.nosync/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29835,10 +29913,10 @@ function Module(moduleName) {
     data: module.bundle.hotData,
     _acceptCallbacks: [],
     _disposeCallbacks: [],
-    accept: function (fn) {
+    accept: function accept(fn) {
       this._acceptCallbacks.push(fn || function () {});
     },
-    dispose: function (fn) {
+    dispose: function dispose(fn) {
       this._disposeCallbacks.push(fn);
     }
   };
@@ -29852,7 +29930,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50785" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53594" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -30028,5 +30106,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../node_modules.nosync/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/src.e31bb0bc.js.map

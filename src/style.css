@@ -13,3 +13,20 @@
 h1 {
   font-size: 48px;
 }
+
+.to-do-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  min-width: 20vw;
+  border: solid 2px #808080;
+}
+
+.to-do-item > p {
+  padding-left: 5px;
+}
+
+.to-do-item > button {
+  background: white;
+  font-weight: bold;
+}

@@ -39,6 +39,7 @@ logs
 **/*.back.*
 
 node_modules
+node_modules.nosync
 bower_components
 
 *.sublime*

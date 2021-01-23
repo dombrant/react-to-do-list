@@ -1,10 +1,10 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ listLength }) => {
   return (
     <div className="header-container">
       <h1> To-Do List </h1>
-      <p> Hello, you have items due </p>
+      <p> Hello, you have items {listLength} due </p>
     </div>
   );
 };
