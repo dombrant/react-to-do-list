@@ -10,6 +10,17 @@
   margin-top: 10vh;
 }
 
+.header-container > div {
+  display: flex;
+  align-items: center;
+}
+
+.header-container svg {
+  margin-right: 10px;
+  width: 75px;
+  height: 75px;
+}
+
 h1 {
   font-size: 48px;
 }
