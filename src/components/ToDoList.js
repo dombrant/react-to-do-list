@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ToDoItem from "./ToDoItem";
 
-const ToDoList = ({ toDoItems }) => {
+const ToDoList = ({ toDoItems, deleteItem }) => {
   return (
     <ul>
       {toDoItems.map((item, index) => {
-        return <ToDoItem key={index} text={item.text} />;
+        return (
+          <ToDoItem
+            key={index}
+            index={index}
+            text={item.text}
+            deleteItem={deleteItem}
+          />
+        );
       })}
     </ul>
   );

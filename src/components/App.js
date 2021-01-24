@@ -9,10 +9,20 @@ const App = () => {
     { text: "Call Jenny" },
   ]);
 
+  const deleteItem = (index) => {
+    const newToDoItems = [...toDoItems];
+    newToDoItems.splice(index, 1);
+    setToDoItems(newToDoItems);
+  };
+
   return (
     <div>
       <Header listLength={toDoItems.length} />
-      <ToDoList toDoItems={toDoItems} setToDoItems={setToDoItems} />
+      <ToDoList
+        toDoItems={toDoItems}
+        setToDoItems={setToDoItems}
+        deleteItem={deleteItem}
+      />
     </div>
   );
 };

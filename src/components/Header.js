@@ -9,7 +9,7 @@ const Header = ({ listLength }) => {
         </svg>
         <h1> To-Do List </h1>{" "}
       </div>
-      <p> Hello, you have items {listLength} due </p>
+      <p> Hello, you have {listLength} items due </p>
     </div>
   );
 };
