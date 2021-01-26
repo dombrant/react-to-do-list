@@ -29825,6 +29825,66 @@ var ToDoItem = function ToDoItem(_ref) {
 
 var _default = ToDoItem;
 exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/AddItem.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var AddItem = function AddItem(_ref) {
+  var addItem = _ref.addItem;
+
+  var _useState = (0, _react.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      value = _useState2[0],
+      setValue = _useState2[1];
+
+  var handleSubmit = function handleSubmit(event) {
+    event.preventDefault(); // Don't add to the to do list if no text has been entered
+
+    if (!value) {
+      return;
+    }
+
+    addItem(value); // Reset the input field to show the placeholder again
+
+    setValue("");
+  };
+
+  return /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: "Add a new item",
+    value: value,
+    onChange: function onChange(event) {
+      return setValue(event.target.value);
+    }
+  }));
+};
+
+var _default = AddItem;
+exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"components/ToDoList.js":[function(require,module,exports) {
 "use strict";
 
@@ -29837,6 +29897,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _ToDoItem = _interopRequireDefault(require("./ToDoItem"));
 
+var _AddItem = _interopRequireDefault(require("./AddItem"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -29845,7 +29907,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var ToDoList = function ToDoList(_ref) {
   var toDoItems = _ref.toDoItems,
-      deleteItem = _ref.deleteItem;
+      deleteItem = _ref.deleteItem,
+      addItem = _ref.addItem;
   return /*#__PURE__*/_react.default.createElement("ul", null, toDoItems.map(function (item, index) {
     return /*#__PURE__*/_react.default.createElement(_ToDoItem.default, {
       key: index,
@@ -29853,12 +29916,14 @@ var ToDoList = function ToDoList(_ref) {
       text: item.text,
       deleteItem: deleteItem
     });
+  }), /*#__PURE__*/_react.default.createElement(_AddItem.default, {
+    addItem: addItem
   }));
 };
 
 var _default = ToDoList;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./ToDoItem":"components/ToDoItem.js"}],"components/App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./ToDoItem":"components/ToDoItem.js","./AddItem":"components/AddItem.js"}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29913,12 +29978,22 @@ var App = function App() {
     setToDoItems(newToDoItems);
   };
 
+  var addItem = function addItem(text) {
+    var newToDoItems = _toConsumableArray(toDoItems);
+
+    newToDoItems.push({
+      text: text
+    });
+    setToDoItems(newToDoItems);
+  };
+
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, {
     listLength: toDoItems.length
   }), /*#__PURE__*/_react.default.createElement(_ToDoList.default, {
     toDoItems: toDoItems,
     setToDoItems: setToDoItems,
-    deleteItem: deleteItem
+    deleteItem: deleteItem,
+    addItem: addItem
   }));
 };
 
@@ -29964,7 +30039,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50599" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52816" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

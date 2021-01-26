@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import ToDoItem from "./ToDoItem";
+import AddItem from "./AddItem";
 
-const ToDoList = ({ toDoItems, deleteItem }) => {
+const ToDoList = ({ toDoItems, deleteItem, addItem }) => {
   return (
     <ul>
       {toDoItems.map((item, index) => {
@@ -14,6 +15,7 @@ const ToDoList = ({ toDoItems, deleteItem }) => {
           />
         );
       })}
+      <AddItem addItem={addItem} />
     </ul>
   );
 };

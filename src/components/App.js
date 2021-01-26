@@ -15,6 +15,12 @@ const App = () => {
     setToDoItems(newToDoItems);
   };
 
+  const addItem = (text) => {
+    const newToDoItems = [...toDoItems];
+    newToDoItems.push({ text });
+    setToDoItems(newToDoItems);
+  };
+
   return (
     <div>
       <Header listLength={toDoItems.length} />
@@ -22,6 +28,7 @@ const App = () => {
         toDoItems={toDoItems}
         setToDoItems={setToDoItems}
         deleteItem={deleteItem}
+        addItem={addItem}
       />
     </div>
   );
