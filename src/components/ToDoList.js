@@ -15,7 +15,7 @@ const ToDoList = ({ toDoItems, deleteItem, addItem }) => {
           />
         );
       })}
-      <AddItem addItem={addItem} />
+      <AddItem addItem={addItem} tabIndex="0" />
     </ul>
   );
 };

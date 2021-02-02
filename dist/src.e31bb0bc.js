@@ -29819,8 +29819,9 @@ var ToDoItem = function ToDoItem(_ref) {
   }, /*#__PURE__*/_react.default.createElement("p", null, " ", text, " "), /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return deleteItem(index);
-    }
-  }, " X "));
+    },
+    tabIndex: "0"
+  }, " ", "X", " "));
 };
 
 var _default = ToDoItem;
@@ -29917,7 +29918,8 @@ var ToDoList = function ToDoList(_ref) {
       deleteItem: deleteItem
     });
   }), /*#__PURE__*/_react.default.createElement(_AddItem.default, {
-    addItem: addItem
+    addItem: addItem,
+    tabIndex: "0"
   }));
 };
 
@@ -30059,7 +30061,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63140" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50382" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

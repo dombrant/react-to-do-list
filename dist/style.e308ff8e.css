@@ -47,6 +47,11 @@ h1 {
   font-weight: bold;
 }
 
+/* Show a blue border when focusing on each button element tab because they aren't doing so by default with tabIndex */
+.to-do-item > button:focus {
+  border: 2px solid#2261C5;
+}
+
 form {
   display: flex;
   align-items: center;
