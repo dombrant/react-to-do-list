@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-Yes, another to do list to test out a framework. Built with React hooks.
+Yes, another to do list to test out a framework. Built with React hooks. Check out a working demo [here.](https://stupefied-panini-1f7e16.netlify.app)
 
 ## Contributors
 
