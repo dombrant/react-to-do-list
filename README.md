@@ -2,13 +2,7 @@
 
 ## Synopsis
 
-Yes, another to do list to test out a framework
-
-## Installation
-
-## Usage
-
-## Motivation
+Yes, another to do list to test out a framework. Built with React hooks.
 
 ## Contributors
 
