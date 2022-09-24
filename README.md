@@ -8,7 +8,7 @@ Yes, another to do list to test out a framework. Built with React hooks. Check o
 
 **Dominic Brant**.
 
-[Follow me on Twitter](https://twitter.com/dombrant). If you have any thoughts/suggestions/problems, feel free to open an issue or Tweet me.
+If you have any thoughts/suggestions/problems, feel free to open an [issue](https://github.com/dombrant/react-to-do-list/issues).
 
 ## License
 
